@@ -11,7 +11,7 @@ Image_path = Path(__file__).parent.absolute() / "Images"
 Data_path = Path(__file__).parent.absolute() / "Data"
 
 # Sidebar and its contents
-BackGround = Image.open(Image_path / "Logo.png")
+BackGround = Image.open(Image_path / "Logo.PNG")
 st.sidebar. image(BackGround)
 st.sidebar.title("About")
 st.sidebar.write("Web App For [Atoms of Confusion]""(https://atomsofconfusion.com/).")
