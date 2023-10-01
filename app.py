@@ -35,10 +35,11 @@ with st.expander("Apply filters"):
     selected_atom_df = atoms_data[atoms_data['atom']==atom_selected]
     st.write("[Detailed Atom Description]""(https://atomsofconfusion.com/data.html#literal-encoding)")
 
-st.write(selected_atom_df)
 # Filtered Charts
 node_type_rows = st.slider('How many node-types would you like to see?', 0, len(selected_atom_df["node-type"].value_counts()), 1)
-node_type_chart = px.bar(selected_atom_df["node-type"].value_counts().to_frame().reset_index().rename(columns = {'index':'node_type', 'node-type':'count'}).head(node_type_rows), x='node_type', y='count', title=f"node_type and its count for {atom_selected}")
+selected_atom_df = selected_atom_df["node-type"].value_counts().to_frame().reset_index().rename(columns = {'index':'node_type', 'node-type':'count'}).head(node_type_rows)
+st.write(selected_atom_df)
+node_type_chart = px.bar(selected_atom_df, x='node_type', y='count', title=f"node_type and its count for {atom_selected}")
 st.plotly_chart(node_type_chart, use_container_width=True)
 
 parent_type_rows = st.slider('How many parent-types would you like to see?', 0, len(selected_atom_df["parent-type"].value_counts()), 1)
