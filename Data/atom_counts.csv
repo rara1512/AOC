@@ -1,0 +1,15 @@
+atom,count
+omitted-curly-braces,420434
+operator-precedence,408852
+implicit-predicate,104289
+conditional,39338
+post-increment,19747
+assignment-as-value,18069
+repurposed-variable,14779
+comma-operator,10223
+pre-increment,4612
+type-conversion,2290
+logic-as-control-flow,2138
+preprocessor-in-statement,1957
+literal-encoding,1162
+macro-operator-precedence,685
