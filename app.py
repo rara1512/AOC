@@ -37,10 +37,11 @@ with st.expander("Apply filters"):
 
 # Filtered Charts
 node_type_rows = st.slider('How many node-types would you like to see?', 0, len(selected_atom_df["node-type"].value_counts()), 1)
-selected_atom_df = selected_atom_df["node-type"].value_counts().to_frame().reset_index().rename(columns = {'index':'node-type'}).head(node_type_rows)
-node_type_chart = px.bar(selected_atom_df, x='node-type', y='count', title=f"node-type and its count for {atom_selected}")
+node_type_df = selected_atom_df["node-type"].value_counts().to_frame().reset_index().rename(columns = {'index':'node-type'}).head(node_type_rows)
+node_type_chart = px.bar(node_type_df, x='node-type', y='count', title=f"node-type and its count for {atom_selected}")
 st.plotly_chart(node_type_chart, use_container_width=True)
 
 parent_type_rows = st.slider('How many parent-types would you like to see?', 0, len(selected_atom_df["parent-type"].value_counts()), 1)
-parent_type_chart = px.bar(selected_atom_df["parent-type"].value_counts().to_frame().reset_index().rename(columns = {'index':'parent-type'}).head(parent_type_rows), x='parent-type', y='count', title=f"parent-type and its count for {atom_selected}")
+parent_type_df = selected_atom_df["parent-type"].value_counts().to_frame().reset_index().rename(columns = {'index':'parent-type'}).head(parent_type_rows)
+parent_type_chart = px.bar(parent_type_df, x='parent-type', y='count', title=f"parent-type and its count for {atom_selected}")
 st.plotly_chart(parent_type_chart, use_container_width=True)
