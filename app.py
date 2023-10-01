@@ -35,6 +35,7 @@ with st.expander("Apply filters"):
     selected_atom_df = atoms_data[atoms_data['atom']==atom_selected]
     st.write("[Detailed Atom Description]""(https://atomsofconfusion.com/data.html#literal-encoding)")
 
+print(selected_atom_df.columns)
 # Filtered Charts
 node_type_rows = st.slider('How many node-types would you like to see?', 0, len(selected_atom_df["node-type"].value_counts()), 1)
 node_type_chart = px.bar(selected_atom_df["node-type"].value_counts().to_frame().reset_index().rename(columns = {'index':'node-type', 'node-type':'count'}).head(node_type_rows), x='node-type', y='count', title=f"node-type and its count for {atom_selected}")
