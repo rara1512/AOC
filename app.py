@@ -47,5 +47,5 @@ parent_type_df = selected_atom_df["parent-type"].value_counts().to_frame().reset
 parent_type_chart = px.bar(parent_type_df, x='parent-type', y='count', title=f"parent-type and its count for {atom_selected}")
 st.plotly_chart(parent_type_chart, use_container_width=True)
 
-st.markdown(**"Atom and its occurences across various files"**)
+st.markdown("Atom and its occurences across various files")
 st.dataframe(atom_file_occurrence[atom_file_occurrence["atom"]==atom_selected])
