@@ -22,6 +22,7 @@ st.title("Atoms of Confusion")
 # Reading data
 atoms_data = pd.read_csv(Data_path / "atom-context_2018-10-12_parent-type.csv")
 atom_counts = pd.read_csv(Data_path / "atom_counts.csv")
+atom_file_occurrence = pd.read_csv(Data_path / "atom_file_count.csv")
 
 # Pie chart for atom distribution
 atom_dist = px.pie(atom_counts, names = "atom", values = "count", title = "Atoms and its distribution")
@@ -45,3 +46,6 @@ parent_type_rows = st.slider('How many parent-types would you like to see?', 0, 
 parent_type_df = selected_atom_df["parent-type"].value_counts().to_frame().reset_index().rename(columns = {'index':'parent-type'}).head(parent_type_rows)
 parent_type_chart = px.bar(parent_type_df, x='parent-type', y='count', title=f"parent-type and its count for {atom_selected}")
 st.plotly_chart(parent_type_chart, use_container_width=True)
+
+st.markdown("Atom and its occurences across various files")
+st.dataframe(atom_file_occurrence[atom_file_occurrence["atom"]==atom_selected])
