@@ -73,15 +73,15 @@ sm = ScalarMappable(cmap=cmap, norm=Normalize(vmin=min(edge_colors), vmax=max(ed
 sm.set_array([])
 
 # Draw nodes, filtered edges, and labels
-nx.draw_networkx_nodes(G, pos, node_size=300, node_color='skyblue')
+nx.draw_networkx_nodes(G, pos, node_size=300, node_color='pink')
 nx.draw_networkx_edges(G, pos, edgelist=filtered_edges, edge_color=edge_colors, width=2, edge_cmap=cmap)
 nx.draw_networkx_labels(G, pos, font_size=5, font_weight='bold')
 
 # Create a colorbar as the legend and specify the axis for it (the current axis)
-cbar = plt.colorbar(sm, label='Distance', orientation='vertical', ax=plt.gca())
+cbar = plt.colorbar(sm, label='Average offset distance', orientation='vertical', ax=plt.gca())
 
+plt.title(f"This network graph shows {atom_selected} atom and its closeness with other atoms")
 plt.axis('off')
-# plt.show()
 st.pyplot(plt)
 
 
