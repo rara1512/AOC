@@ -64,7 +64,7 @@ pos = nx.spring_layout(G, seed=42)
 
 # Filter edges with weight below a certain threshold
 
-fig, ax = plt.subplots(figsize=(10, 10)) 
+fig, ax = plt.subplots(figsize=(5, 10)) 
 threshold = 5
 filtered_edges = [(u, v) for u, v, d in G.edges(data=True) if d['weight'] >= threshold]
 
@@ -77,7 +77,7 @@ sm.set_array([])
 # Draw nodes, filtered edges, and labels
 nx.draw_networkx_nodes(G, pos, node_size=300, node_color='pink')
 nx.draw_networkx_edges(G, pos, edgelist=filtered_edges, edge_color=edge_colors, width=2, edge_cmap=cmap)
-nx.draw_networkx_labels(G, pos, font_size=5, font_weight='bold')
+nx.draw_networkx_labels(G, pos, font_size=8, font_weight='bold')
 
 # Create a colorbar as the legend and specify the axis for it (the current axis)
 cbar = plt.colorbar(sm, label='Average offset distance', orientation='vertical', ax=plt.gca())
