@@ -1,2 +1,4 @@
 streamlit
 plotly
+networkx
+matplotlib
