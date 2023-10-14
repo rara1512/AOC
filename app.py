@@ -63,6 +63,8 @@ for index, row in selected_atom_distance_df.iterrows():
 pos = nx.spring_layout(G, seed=42)
 
 # Filter edges with weight below a certain threshold
+
+fig, ax = plt.subplots(figsize=(10, 10)) 
 threshold = 5
 filtered_edges = [(u, v) for u, v, d in G.edges(data=True) if d['weight'] >= threshold]
 
