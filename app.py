@@ -7,6 +7,8 @@ import pandas as pd
 import plotly.express as px
 import networkx as nx
 import matplotlib.pyplot as plt
+from matplotlib.cm import ScalarMappable
+from matplotlib.colors import Normalize
 
 # Set path for images and data
 Image_path = Path(__file__).parent.absolute() / "Images"
