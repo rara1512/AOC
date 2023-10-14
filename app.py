@@ -53,5 +53,35 @@ st.plotly_chart(parent_type_chart, use_container_width=True)
 #Network graph
 selected_atom_distance_df = pair_means[pair_means["atom1"] == atom_selected]
 
+G = nx.Graph()
+for index, row in selected_atom_distance_df.iterrows():
+    node1, node2, distance = row["atom1"], row["atom2"], row["distance"]
+    G.add_edge(node1, node2, weight=distance)
+
+pos = nx.spring_layout(G, seed=42)
+
+# Filter edges with weight below a certain threshold
+threshold = 5
+filtered_edges = [(u, v) for u, v, d in G.edges(data=True) if d['weight'] >= threshold]
+
+# Create a legend mapping edge colors to distances
+edge_colors = [d['weight'] for u, v, d in G.edges(data=True)]
+cmap = plt.get_cmap('viridis')  # Choose a color map
+sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(min(edge_colors), max(edge_colors)))
+sm.set_array([])
+
+# Draw nodes, filtered edges, and labels
+nx.draw_networkx_nodes(G, pos, node_size=300, node_color='skyblue')
+nx.draw_networkx_edges(G, pos, edgelist=filtered_edges, edge_color=edge_colors, width=2, edge_cmap=cmap)
+nx.draw_networkx_labels(G, pos, font_size=5, font_weight='bold')
+
+# Create a color bar as the legend
+plt.colorbar(sm, label='Distance', orientation='vertical')
+
+plt.axis('off')
+plt.show()
+
+
+# Dataframe Table
 st.markdown("Atom and its occurences across various files")
 st.dataframe(atom_file_occurrence[atom_file_occurrence["atom"]==atom_selected])
