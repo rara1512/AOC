@@ -64,7 +64,7 @@ pos = nx.spring_layout(G, seed=42)
 
 # Filter edges with weight below a certain threshold
 
-fig, ax = plt.subplots(figsize=(14, 7)) 
+fig, ax = plt.subplots(figsize=(12, 8)) 
 threshold = 5
 filtered_edges = [(u, v) for u, v, d in G.edges(data=True) if d['weight'] >= threshold]
 
