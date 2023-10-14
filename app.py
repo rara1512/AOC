@@ -77,7 +77,7 @@ sm.set_array([])
 # Draw nodes, filtered edges, and labels
 nx.draw_networkx_nodes(G, pos, node_size=300, node_color='pink')
 nx.draw_networkx_edges(G, pos, edgelist=filtered_edges, edge_color=edge_colors, width=2, edge_cmap=cmap)
-nx.draw_networkx_labels(G, pos, font_size=8, font_weight='bold')
+nx.draw_networkx_labels(G, pos, font_size=10, font_weight='bold')
 
 # Create a colorbar as the legend and specify the axis for it (the current axis)
 cbar = plt.colorbar(sm, label='Average offset distance', orientation='vertical', ax=plt.gca())
