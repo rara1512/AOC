@@ -81,7 +81,8 @@ nx.draw_networkx_labels(G, pos, font_size=5, font_weight='bold')
 cbar = plt.colorbar(sm, label='Distance', orientation='vertical', ax=plt.gca())
 
 plt.axis('off')
-plt.show()
+# plt.show()
+st.pyplot(plt)
 
 
 # Dataframe Table
