@@ -69,7 +69,7 @@ filtered_edges = [(u, v) for u, v, d in G.edges(data=True) if d['weight'] >= thr
 # Create a legend mapping edge colors to distances
 edge_colors = [d['weight'] for u, v, d in G.edges(data=True)]
 cmap = plt.get_cmap('viridis')  # Choose a color map
-sm = plt.cm.ScalarMappable(cmap=cmap, norm=plt.Normalize(min(edge_colors), max(edge_colors)))
+sm = ScalarMappable(cmap=cmap, norm=Normalize(vmin=min(edge_colors), vmax=max(edge_colors)))
 sm.set_array([])
 
 # Draw nodes, filtered edges, and labels
@@ -78,7 +78,10 @@ nx.draw_networkx_edges(G, pos, edgelist=filtered_edges, edge_color=edge_colors, 
 nx.draw_networkx_labels(G, pos, font_size=5, font_weight='bold')
 
 # Create a color bar as the legend
-plt.colorbar(sm, label='Distance', orientation='vertical')
+cbar = plt.colorbar(sm, label='Distance', orientation='vertical')
+
+# Now, associate the colorbar with the desired axis (in this case, the current axis)
+cbar.ax.set_visible(True)
 
 plt.axis('off')
 plt.show()
