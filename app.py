@@ -77,11 +77,8 @@ nx.draw_networkx_nodes(G, pos, node_size=300, node_color='skyblue')
 nx.draw_networkx_edges(G, pos, edgelist=filtered_edges, edge_color=edge_colors, width=2, edge_cmap=cmap)
 nx.draw_networkx_labels(G, pos, font_size=5, font_weight='bold')
 
-# Create a color bar as the legend
-cbar = plt.colorbar(sm, label='Distance', orientation='vertical')
-
-# Now, associate the colorbar with the desired axis (in this case, the current axis)
-cbar.ax.set_visible(True)
+# Create a colorbar as the legend and specify the axis for it (the current axis)
+cbar = plt.colorbar(sm, label='Distance', orientation='vertical', ax=plt.gca())
 
 plt.axis('off')
 plt.show()
