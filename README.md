@@ -1,5 +1,5 @@
 # Atoms of confusion
-Steps to run the code-
+Steps to run the web application-
 
 - Download the files from git repo
 - Install the python packages in requirements.txt
